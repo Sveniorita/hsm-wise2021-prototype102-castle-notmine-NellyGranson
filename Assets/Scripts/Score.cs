@@ -5,36 +5,28 @@ using UnityEngine.UI;
 
 // Dieses Script beschreibt, dass der Score hoch geht ,
 // wenn eine Münze gesammelt wird.
-
 // Achtung! Das Script liegt auf dem Player, nicht der Münze!
 
-public class ScoreScript : MonoBehaviour
+public class Score : MonoBehaviour
 {
     public Text myScoreText;
     private int scoreNum; 
 
     void Start()
     {
-
         scoreNum = 0;
-        myScoreText.text = "scpre : " + scoreNum;
-
-
+        myScoreText.text = ("Score: " + scoreNum);
     }
 
-    private void OnTriggerEnter2D(Collider2D Coin)
+    private void OnTriggerEnter2D(Collider2D col)
     {
 
-        if(Coin.tag == "MyCoin")
+        if(col.tag == "MyCoin")
         {
-
             scoreNum += 1;
-            Destroy(Coin.gameObject);
-            myScoreText.text = "score" + scoreNum;
-
+            Destroy(col.gameObject);
+            myScoreText.text = ("Score: " + scoreNum);
         }
-        
     }
-
 
 }
