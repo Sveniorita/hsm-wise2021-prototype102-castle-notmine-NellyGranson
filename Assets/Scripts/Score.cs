@@ -10,7 +10,9 @@ using UnityEngine.UI;
 public class Score : MonoBehaviour
 {
     public Text myScoreText;
-    private int scoreNum; 
+    private int scoreNum;
+    public AudioSource CoinSFX;
+    public ParticleSystem playParticleSystem;
 
     void Start()
     {
@@ -24,8 +26,13 @@ public class Score : MonoBehaviour
         if(col.tag == "MyCoin")
         {
             scoreNum += 1;
+            playParticleSystem = GetComponent<ParticleSystem>();
+            playParticleSystem.Play();
             Destroy(col.gameObject);
             myScoreText.text = ("Score: " + scoreNum);
+            CoinSFX = GetComponent<AudioSource>();
+            CoinSFX.Play(); 
+            
         }
     }
 
